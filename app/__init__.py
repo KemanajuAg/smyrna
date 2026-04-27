@@ -1,10 +1,17 @@
-from flask import Flask
+from flask import Blueprint, render_template
+
+main = Blueprint("main", __name__)
+
+# 🏠 HOME
 
 
-def create_app():
-    app = Flask(__name__)
+@main.route("/")
+def home():
+    return render_template("home.html")
 
-    from .routes import main
-    app.register_blueprint(main)
+# 📚 BLOG
 
-    return app
+
+@main.route("/blog")
+def blog():
+    return render_template("blog.html")
