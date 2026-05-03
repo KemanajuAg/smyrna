@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smyrna — Ancient Anatolia & Greek History</title>
-  <meta name="description" content="Discover ancient cities, myths and civilizations of the Anatolian world." />
+  <title>Smyrna — Antik Anadolu & Yunan Tarihi | Ayhan Mese</title>
+  <meta name="description" content="Smyrna: blog culturel multilingue sur l'Anatolie antique, la Grèce ancienne et les civilisations du monde méditerranéen. Par Ayhan Mese, guide professionnel." />
+  <meta name="keywords" content="Anatolie antique, histoire grecque, Éphèse, Troie, Smyrna, Izmir, guide Turquie, Ayhan Mese, archéologie, mythologie" />
+  <meta name="author" content="Ayhan Mese" />
+  <meta property="og:title" content="Smyrna — Ancient Anatolia & Greek History" />
+  <meta property="og:description" content="Discover ancient cities, forgotten myths and lost civilizations of the Anatolian world." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -98,55 +102,109 @@
       border-color: var(--gold);
     }
 
-    /* ===== HERO ===== */
-    .hero {
+    /* ===== HERO FULL ===== */
+    .hero-full {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .hero-mosaic {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      height: 100%;
+      gap: 3px;
+    }
+
+    .hero-img {
+      background-size: cover;
+      background-position: center;
+      filter: sepia(0.4) brightness(0.7);
+      transition: filter 0.4s;
+    }
+    .hero-img:hover { filter: sepia(0.2) brightness(0.85); }
+
+    .hero-img-1 {
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80');
+    }
+    .hero-img-2 {
+      background-image: url('https://images.unsplash.com/photo-1633930654073-2e3db47d5b15?w=600&q=80');
+    }
+    .hero-img-3 {
+      background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=80');
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(42,31,14,0.78) 0%, rgba(92,74,42,0.55) 50%, rgba(42,31,14,0.65) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 5rem 2rem 4rem;
-      border-bottom: 1px solid rgba(139,115,85,0.3);
+      padding: 2rem;
     }
 
-    .hero::before {
-      content: '— ✦ —';
-      display: block;
+    .hero-pre {
       font-family: 'Cinzel', serif;
-      color: var(--gold);
-      font-size: 14px;
+      color: var(--gold-light);
+      font-size: 13px;
       letter-spacing: 0.3em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    .hero h1 {
+    .hero-title {
       font-family: 'Cinzel', serif;
-      font-size: clamp(38px, 8vw, 64px);
+      font-size: clamp(42px, 8vw, 72px);
       font-weight: 700;
-      color: var(--stone-darker);
-      letter-spacing: 0.1em;
-      line-height: 1.1;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+      color: var(--parchment);
+      letter-spacing: 0.15em;
+      line-height: 1;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
     }
 
     .hero-sub {
       font-family: 'EB Garamond', serif;
       font-style: italic;
       font-size: 20px;
-      color: var(--stone-dark);
-      margin-top: 0.7rem;
-      letter-spacing: 0.04em;
+      color: var(--gold-light);
+      margin-top: 0.6rem;
+      letter-spacing: 0.06em;
     }
 
-    .hero-divider {
-      width: 140px;
+    .hero-divider-line {
+      width: 120px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 1.8rem auto;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      margin: 1.2rem auto;
     }
 
     .hero-desc {
-      font-size: 18px;
-      color: #5c4a2a;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.85;
+      font-size: 17px;
+      color: rgba(245,236,215,0.9);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 5px 14px;
+      border: 1px solid rgba(212,168,67,0.5);
+      color: var(--gold-light);
+      border-radius: 2px;
+      background: rgba(0,0,0,0.2);
     }
 
     /* ===== PAGES ===== */
@@ -445,7 +503,192 @@
       top: 0.55rem;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== PROFILE CARD ===== */
+    .profile-card {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(245,232,200,0.6));
+      border: 1px solid rgba(184,134,11,0.2);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-photo-wrap { flex-shrink: 0; }
+
+    .profile-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--stone-darker), var(--stone-dark));
+      border: 3px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .profile-initials {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .profile-photo-hint {
+      font-size: 10px;
+      color: rgba(212,168,67,0.6);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+      font-family: 'Cinzel', serif;
+    }
+
+    .profile-name {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      color: var(--stone-darker);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-title {
+      font-size: 15px;
+      color: var(--stone-dark);
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .profile-langs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .profile-lang {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid rgba(139,115,85,0.3);
+      border-radius: 2px;
+      color: var(--stone-darker);
+      background: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+    }
+
+    .about-credentials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(139,115,85,0.2);
+    }
+
+    .credential-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem;
+      background: rgba(255,255,255,0.4);
+      border-radius: 3px;
+      border: 1px solid rgba(139,115,85,0.15);
+    }
+
+    .credential-icon { font-size: 20px; }
+
+    .credential-text {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--stone-darker);
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+
+    /* ===== ARTICLE MODAL ===== */
+    .article-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(42,31,14,0.85);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .article-modal.open { display: flex; }
+
+    .article-modal-inner {
+      background: linear-gradient(160deg, #f7eed9, #f0e0c0);
+      border: 1px solid rgba(184,134,11,0.3);
+      border-top: 4px solid var(--gold);
+      border-radius: 4px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--stone-dark);
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      background: none;
+      border: none;
+    }
+    .modal-close:hover { color: var(--rust); }
+
+    .modal-era {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: var(--stone-darker);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .modal-body {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #3a2a10;
+    }
+
+    .modal-body p { margin-bottom: 1rem; }
+
+    .modal-loading {
+      text-align: center;
+      padding: 3rem 0;
+      font-style: italic;
+      color: var(--stone-dark);
+    }
+
+    @media (max-width: 600px) {
+      .profile-card { flex-direction: column; text-align: center; }
+      .profile-langs { justify-content: center; }
+      .hero-full { height: 400px; }
+      .hero-mosaic { grid-template-columns: 1fr; }
+      .hero-img-2, .hero-img-3 { display: none; }
+    }
+
+        /* ===== FOOTER ===== */
     footer {
       background: var(--stone-darker);
       color: var(--stone);
@@ -510,11 +753,25 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
-    <h1>SMYRNA</h1>
-    <p class="hero-sub" id="hero-sub">Ancient Anatolia &amp; Greek History</p>
-    <div class="hero-divider"></div>
-    <p class="hero-desc" id="hero-desc">Discover ancient cities, forgotten myths and lost civilizations of the Anatolian world.</p>
+  <div class="hero-full">
+    <div class="hero-mosaic">
+      <div class="hero-img hero-img-1"></div>
+      <div class="hero-img hero-img-2"></div>
+      <div class="hero-img hero-img-3"></div>
+    </div>
+    <div class="hero-overlay">
+      <div class="hero-pre">— ✦ —</div>
+      <h1 class="hero-title">SMYRNA</h1>
+      <p class="hero-sub" id="hero-sub">Ancient Anatolia &amp; Greek History</p>
+      <div class="hero-divider-line"></div>
+      <p class="hero-desc" id="hero-desc">Discover ancient cities, forgotten myths and lost civilizations of the Anatolian world.</p>
+      <div class="hero-badges">
+        <span class="hero-badge" id="badge-1">🏛 Anatolia</span>
+        <span class="hero-badge" id="badge-2">📜 History</span>
+        <span class="hero-badge" id="badge-3">🌍 EN · FR · TR · NL</span>
+        <span class="hero-badge" id="badge-4">✦ AI Articles</span>
+      </div>
+    </div>
   </div>
 
   <!-- ===== HOME PAGE ===== -->
@@ -563,37 +820,37 @@
           <div class="post-era">C. 3000 BCE — Bronze Age</div>
           <div class="post-title">The Walls of Troy: History or Legend?</div>
           <div class="post-excerpt">Heinrich Schliemann's excavations at Hisarlık shocked the world — nine cities layered upon one another, each hiding a different age of Anatolian civilization...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.1s">
           <div class="post-era">C. 560 BCE — Archaic Period</div>
           <div class="post-title">Ephesus and the Temple of Artemis</div>
           <div class="post-excerpt">One of the Seven Wonders of the Ancient World stood on the western shores of Anatolia, a monument to divine feminine power and Ionian ambition...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.2s">
           <div class="post-era">C. 334 BCE — Hellenistic Period</div>
           <div class="post-title">Alexander's March Through Anatolia</div>
           <div class="post-excerpt">In a single campaign season, the young Macedonian king swept through Persian-held Anatolia, liberating Greek cities and cutting the legendary Gordian Knot...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.3s">
           <div class="post-era">C. 200 BCE — Hellenistic Period</div>
           <div class="post-title">Pergamon: City of Knowledge</div>
           <div class="post-excerpt">Rival to Alexandria itself, the great library of Pergamon held hundreds of thousands of scrolls. Here parchment was born, and the Attalid kings made culture their weapon...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.4s">
           <div class="post-era">C. 1400 BCE — Bronze Age</div>
           <div class="post-title">The Hittites: Forgotten Superpower</div>
           <div class="post-excerpt">For centuries their very name had vanished from history. Then archaeologists unearthed an empire that once challenged Egypt at the Battle of Kadesh...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.5s">
           <div class="post-era">C. 700 BCE — Archaic Period</div>
           <div class="post-title">Homer and the Ionian Coast</div>
           <div class="post-excerpt">Seven cities claimed the honour of being his birthplace. Ancient Smyrna was among them — and the sunlit shores of Ionia breathe through every verse of the Iliad...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
       </div>
     </main>
@@ -608,49 +865,49 @@
           <div class="post-era">C. 3000 BCE — Bronze Age</div>
           <div class="post-title">The Walls of Troy: History or Legend?</div>
           <div class="post-excerpt">Nine cities layered upon one another at Hisarlık, each hiding a different age of Anatolian civilization...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.07s">
           <div class="post-era">C. 560 BCE — Archaic Period</div>
           <div class="post-title">Ephesus and the Temple of Artemis</div>
           <div class="post-excerpt">One of the Seven Wonders of the Ancient World stood on the western shores of Anatolia...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.14s">
           <div class="post-era">C. 334 BCE — Hellenistic Period</div>
           <div class="post-title">Alexander's March Through Anatolia</div>
           <div class="post-excerpt">The young Macedonian king swept through Persian-held Anatolia, liberating Greek cities and cutting the Gordian Knot...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.21s">
           <div class="post-era">C. 200 BCE — Hellenistic Period</div>
           <div class="post-title">Pergamon: City of Knowledge</div>
           <div class="post-excerpt">Rival to Alexandria itself, the great library of Pergamon held hundreds of thousands of scrolls...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.28s">
           <div class="post-era">C. 1400 BCE — Bronze Age</div>
           <div class="post-title">The Hittites: Forgotten Superpower</div>
           <div class="post-excerpt">For centuries their very name had vanished from history. Then archaeologists unearthed an empire that challenged Egypt...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.35s">
           <div class="post-era">C. 700 BCE — Archaic Period</div>
           <div class="post-title">Homer and the Ionian Coast</div>
           <div class="post-excerpt">Seven cities claimed the honour of being Homer's birthplace. Ancient Smyrna was among them...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.42s">
           <div class="post-era">C. 480 BCE — Classical Period</div>
           <div class="post-title">The Persian Wars and Ionian Greeks</div>
           <div class="post-excerpt">The Ionian Revolt of 499 BCE ignited a conflict that would reshape the Mediterranean world forever...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
         <div class="post-card scroll-reveal" style="transition-delay:0.49s">
           <div class="post-era">C. 100 BCE — Roman Period</div>
           <div class="post-title">Aphrodisias: City of the Goddess</div>
           <div class="post-excerpt">Hidden in the Meander Valley, Aphrodisias was one of the finest cities in the Roman East, blessed by marble and divine patronage...</div>
-          <a class="post-read">READ MORE →</a>
+          <a class="post-read" onclick="openArticle(this)">READ MORE →</a>
         </div>
       </div>
     </main>
@@ -662,19 +919,51 @@
       <div class="about-content">
         <div class="section-title" id="section-about-title">ABOUT SMYRNA</div>
         <div class="scroll-reveal">
-          <h2 id="about-h2">A Journey Through Ancient Worlds</h2>
+
+          <!-- PROFILE CARD -->
+          <div class="profile-card">
+            <div class="profile-photo-wrap">
+              <div class="profile-photo" id="profile-photo">
+                <div class="profile-initials">AM</div>
+                <div class="profile-photo-hint" id="profile-hint">Add your photo</div>
+              </div>
+            </div>
+            <div class="profile-info">
+              <h2 class="profile-name">Ayhan Mese</h2>
+              <p class="profile-title" id="profile-title-text">Professional Tourist Guide · Turkey</p>
+              <div class="profile-langs">
+                <span class="profile-lang">🇹🇷 Türkçe</span>
+                <span class="profile-lang">🇬🇧 English</span>
+                <span class="profile-lang">🇳🇱 Nederlands</span>
+              </div>
+            </div>
+          </div>
 
           <div class="about-quote" id="about-quote">
             "The fates have given mankind a patient soul." — Homer, Iliad
           </div>
 
-          <p id="about-p1">Smyrna is a blog dedicated to the ancient civilizations of Anatolia and the Greek world. From the Bronze Age cities of Troy and the Hittite empire to the golden age of Ionian philosophy and Hellenistic culture, we explore the stories, people and places that shaped the ancient Mediterranean.</p>
+          <p id="about-p1">My name is Ayhan Mese. I am a professional tourist guide based in Turkey, certified to guide in Turkish, English and Dutch. For many years I have walked the ancient ruins of Anatolia — from the marble streets of Ephesus to the walls of Troy, from the temples of Pergamon to the rock-cut tombs of Lycia — always with the same wonder and the same passion for the stories these stones hold.</p>
 
-          <p id="about-p2">This project began as a personal passion for Anatolian archaeology and Greek mythology. The coast of western Turkey — ancient Ionia — is one of the richest archaeological landscapes in the world, yet it remains little known to the wider public. Smyrna aims to change that.</p>
+          <p id="about-p2">Smyrna is my personal project: a multilingual blog dedicated to the ancient civilizations of Anatolia and the Greek world. The coast of western Turkey — ancient Ionia — is one of the richest archaeological landscapes on earth, yet it remains little known to the wider public. This blog is my way of sharing what I discover every day on the ground.</p>
 
-          <p id="about-p3">All articles are written with the help of historical sources, modern scholarship, and our AI assistant — which can generate new articles on demand in French, English, or Turkish. This makes Smyrna one of the first multilingual AI-powered ancient history blogs.</p>
+          <p id="about-p3">All articles are written with the help of historical sources, modern scholarship, and an AI assistant — making it possible to publish content in French, English, Turkish and Dutch. The name "Smyrna" refers to the ancient city now known as İzmir, traditionally one of the birthplaces of Homer, and a city that has been continuously inhabited for over 3,000 years.</p>
 
-          <p id="about-p4">The name "Smyrna" refers to the ancient city now known as İzmir, on the Aegean coast of Turkey — traditionally considered one of the birthplaces of Homer, and a city that has continuously been inhabited for over 3,000 years.</p>
+          <div class="about-credentials">
+            <div class="credential-item">
+              <div class="credential-icon">🏛</div>
+              <div class="credential-text" id="cred-1">Professional Licensed Guide</div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon">🌍</div>
+              <div class="credential-text" id="cred-2">TR · EN · NL</div>
+            </div>
+            <div class="credential-item">
+              <div class="credential-icon">📍</div>
+              <div class="credential-text" id="cred-3">Based in Turkey · From Belgium</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>
@@ -739,6 +1028,16 @@
         </div>
       </div>
     </main>
+  </div>
+
+  <!-- ARTICLE MODAL -->
+  <div class="article-modal" id="article-modal" onclick="closeModal(event)">
+    <div class="article-modal-inner">
+      <button class="modal-close" onclick="document.getElementById('article-modal').classList.remove('open')">✕ CLOSE</button>
+      <div class="modal-era" id="modal-era"></div>
+      <div class="modal-title" id="modal-title"></div>
+      <div class="modal-body" id="modal-body"><div class="modal-loading">✦ Loading from the ancient archives...</div></div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -1003,7 +1302,40 @@
     document.querySelectorAll('.scroll-reveal:not(.in)').forEach(el => observer.observe(el));
   }
 
-  initReveal();
+  async function openArticle(el) {
+    const card = el.closest('.post-card');
+    const era = card.querySelector('.post-era') ? card.querySelector('.post-era').textContent : '';
+    const title = card.querySelector('.post-title').textContent;
+    const modal = document.getElementById('article-modal');
+    document.getElementById('modal-era').textContent = era;
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-body').innerHTML = '<div class="modal-loading">✦ Consulting the ancient archives...</div>';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: title, lang: document.getElementById('article-lang') ? document.getElementById('article-lang').value : 'English' })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+      document.getElementById('modal-title').textContent = data.title || title;
+      document.getElementById('modal-body').innerHTML = data.body.split('\n\n').map(p => '<p>' + p + '</p>').join('');
+    } catch(e) {
+      document.getElementById('modal-body').innerHTML = '<p style="color:var(--rust)">Could not load article: ' + e.message + '</p>';
+    }
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('article-modal')) {
+      document.getElementById('article-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+    initReveal();
 </script>
 
 </body>
