@@ -978,13 +978,11 @@
         body: JSON.stringify({ topic: topic, lang: lang })
       });
       const data = await res.json();
-      const text = data.content.map(i => i.text || '').join('');
-      const clean = text.replace(/```json|```/g, '').trim();
-      const parsed = JSON.parse(clean);
-      titleEl.textContent = parsed.title;
-      bodyEl.innerHTML = parsed.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      if (data.error) throw new Error(data.error);
+      titleEl.textContent = data.title;
+      bodyEl.innerHTML = data.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
     } catch (e) {
-      bodyEl.innerHTML = '<p style="color:var(--rust)">Could not generate article. Make sure the API key is configured in your deployment.</p>';
+      bodyEl.innerHTML = `<p style="color:var(--rust)">Hata: ${e.message}</p>`;
     }
 
     btn.disabled = false;
