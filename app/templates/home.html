@@ -1,5 +1,1012 @@
-<h1>🏛️ Smyrna</h1>
-<p>Ancient Anatolia & Greek History Blog</p>
-<hr>
-<p>Welcome to Smyrna project. Discover ancient cities, myths and civilizations.</p>
-<a href="/blog">Go to Blog</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smyrna — Ancient Anatolia & Greek History</title>
+  <meta name="description" content="Discover ancient cities, myths and civilizations of the Anatolian world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --stone: #c8b99a;
+      --stone-dark: #8b7355;
+      --stone-darker: #5c4a2a;
+      --parchment: #f5ecd7;
+      --ink: #2a1f0e;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --rust: #8b3a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #2a1f0e;
+      font-family: 'EB Garamond', Georgia, serif;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    .site-wrap {
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(139,115,85,0.04) 8px, rgba(139,115,85,0.04) 9px),
+        linear-gradient(160deg, #f7eed9 0%, #f0e0c0 30%, #ede0c8 60%, #f5ecd7 100%);
+      min-height: 100vh;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background: linear-gradient(180deg, var(--stone-darker) 0%, var(--stone-dark) 100%);
+      border-bottom: 3px solid var(--gold);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      color: var(--stone);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .lang-switcher { display: flex; gap: 6px; }
+    .lang-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid rgba(184,134,11,0.4);
+      background: transparent;
+      color: var(--stone);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+      letter-spacing: 0.08em;
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      border-bottom: 1px solid rgba(139,115,85,0.3);
+    }
+
+    .hero::before {
+      content: '— ✦ —';
+      display: block;
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(38px, 8vw, 64px);
+      font-weight: 700;
+      color: var(--stone-darker);
+      letter-spacing: 0.1em;
+      line-height: 1.1;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .hero-sub {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--stone-dark);
+      margin-top: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-divider {
+      width: 140px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.8rem auto;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      color: #5c4a2a;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+
+    /* ===== PAGES ===== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ===== MAIN ===== */
+    main { max-width: 960px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      color: #8b6508;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-title::before, .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,115,85,0.4));
+    }
+    .section-title::after { background: linear-gradient(270deg, transparent, rgba(139,115,85,0.4)); }
+
+    /* ===== AI PANEL ===== */
+    .ai-panel {
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(245,236,215,0.8));
+      border: 1px solid rgba(184,134,11,0.25);
+      border-radius: 4px;
+      padding: 2rem;
+      margin-bottom: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rust), var(--gold), var(--rust));
+    }
+
+    .ai-panel h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      color: var(--stone-darker);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .ai-panel p {
+      font-size: 15px;
+      color: #5c4a2a;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      margin-bottom: 1.2rem;
+    }
+
+    .topic-btn {
+      font-family: 'EB Garamond', serif;
+      font-size: 14px;
+      padding: 9px 12px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(139,115,85,0.3);
+      color: var(--stone-darker);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .topic-btn:hover, .topic-btn.selected {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .custom-input {
+      width: 100%;
+      padding: 10px 14px;
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(139,115,85,0.35);
+      color: var(--ink);
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+    .custom-input:focus { border-color: var(--gold); }
+
+    .controls-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+    .lang-select {
+      font-family: 'EB Garamond', serif;
+      font-size: 15px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(139,115,85,0.3);
+      color: var(--ink);
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .generate-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      padding: 10px 28px;
+      background: linear-gradient(135deg, var(--stone-darker), var(--rust));
+      color: var(--parchment);
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .generate-btn:hover { opacity: 0.88; }
+    .generate-btn:disabled { opacity: 0.5; cursor: default; }
+
+    .generated-post {
+      margin-top: 2rem;
+      padding: 1.8rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(139,115,85,0.2);
+      border-left: 3px solid var(--gold);
+      border-radius: 3px;
+      display: none;
+    }
+    .generated-post.visible { display: block; }
+
+    .generated-post h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--stone-darker);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .generated-post .post-body {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #3a2a10;
+    }
+
+    .generated-post .post-body p { margin-bottom: 1rem; }
+
+    .loading-msg {
+      font-style: italic;
+      color: var(--stone-dark);
+      font-size: 16px;
+    }
+
+    /* ===== POST CARDS ===== */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .post-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.65), rgba(245,232,200,0.5));
+      border: 1px solid rgba(139,115,85,0.25);
+      border-radius: 3px;
+      padding: 1.6rem;
+      transition: border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--rust), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .post-card:hover::after { transform: scaleX(1); }
+    .post-card:hover { border-color: rgba(184,134,11,0.4); }
+
+    .post-era {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .post-title {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      color: var(--stone-darker);
+      margin-bottom: 0.8rem;
+      line-height: 1.35;
+    }
+
+    .post-excerpt {
+      font-size: 15px;
+      color: #5c4a2a;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .post-read {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      color: var(--rust);
+      letter-spacing: 0.1em;
+      margin-top: 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .post-read:hover { color: var(--gold); }
+
+    /* ===== ABOUT PAGE ===== */
+    .about-content {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .about-content h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      color: var(--stone-darker);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    .about-content p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #4a3518;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--stone-dark);
+      background: rgba(184,134,11,0.05);
+    }
+
+    /* ===== LEGAL PAGE ===== */
+    .legal-block {
+      margin-bottom: 2rem;
+    }
+
+    .legal-h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--stone-darker);
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(139,115,85,0.2);
+    }
+
+    .legal-list {
+      margin: 0.8rem 0 0.8rem 1.5rem;
+      list-style: none;
+    }
+
+    .legal-list li {
+      font-size: 15px;
+      color: #4a3518;
+      line-height: 1.8;
+      padding: 0.35rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .legal-list li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--rust);
+      font-size: 10px;
+      top: 0.55rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--stone-darker);
+      color: var(--stone);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    footer .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.12em;
+    }
+
+    footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: rgba(200,185,154,0.6);
+      margin-top: 0.3rem;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .scroll-reveal.in { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      nav { height: auto; padding: 0.7rem 1rem; }
+      .nav-links { display: none; }
+      .hero { padding: 3rem 1rem 2.5rem; }
+      main { padding: 2rem 1rem 4rem; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="site-wrap">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo" onclick="showPage('home')">🏛 SMYRNA</div>
+    <div class="nav-links">
+      <a onclick="showPage('home')" id="nav-home">HOME</a>
+      <a onclick="showPage('blog')" id="nav-blog">BLOG</a>
+      <a onclick="showPage('about')" id="nav-about">ABOUT</a>
+      <a onclick="showPage('legal')" id="nav-legal" style="color:rgba(200,185,154,0.55);">LEGAL</a>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('tr')">TR</button>
+      <button class="lang-btn" onclick="setLang('nl')">NL</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>SMYRNA</h1>
+    <p class="hero-sub" id="hero-sub">Ancient Anatolia &amp; Greek History</p>
+    <div class="hero-divider"></div>
+    <p class="hero-desc" id="hero-desc">Discover ancient cities, forgotten myths and lost civilizations of the Anatolian world.</p>
+  </div>
+
+  <!-- ===== HOME PAGE ===== -->
+  <div class="page active" id="page-home">
+    <main>
+
+      <!-- AI Panel -->
+      <div class="ai-panel scroll-reveal">
+        <h3 id="ai-title">✦ GENERATE AN ARTICLE WITH AI</h3>
+        <p id="ai-desc">Choose a topic or write your own, then select the language for your article.</p>
+
+        <div class="topic-grid" id="topic-grid">
+          <button class="topic-btn" onclick="selectTopic(this, 'Troy and the Trojan War')">Troy & the Trojan War</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'Ephesus and the Temple of Artemis')">Ephesus & Artemis</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'The Oracle of Delphi')">Oracle of Delphi</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'Alexander the Great in Anatolia')">Alexander the Great</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'Ancient Smyrna, the city of Izmir')">Ancient Smyrna</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'The Hittite civilization in Anatolia')">Hittites</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'The city of Pergamon and its great library')">Pergamon</button>
+          <button class="topic-btn" onclick="selectTopic(this, 'Aphrodisias, city of the goddess of love')">Aphrodisias</button>
+        </div>
+
+        <input class="custom-input" id="custom-topic" placeholder="Or write your own topic..." />
+
+        <div class="controls-row">
+          <select class="lang-select" id="article-lang">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Turkish">Turkish</option>
+            <option value="Dutch">Nederlands</option>
+          </select>
+          <button class="generate-btn" id="gen-btn" onclick="generateArticle()">✦ GENERATE ARTICLE</button>
+        </div>
+
+        <div class="generated-post" id="generated-post">
+          <h4 id="gen-title"></h4>
+          <div class="post-body" id="gen-body"></div>
+        </div>
+      </div>
+
+      <!-- Featured Articles -->
+      <div class="section-title" id="section-featured">FEATURED ARTICLES</div>
+
+      <div class="posts-grid">
+        <div class="post-card scroll-reveal">
+          <div class="post-era">C. 3000 BCE — Bronze Age</div>
+          <div class="post-title">The Walls of Troy: History or Legend?</div>
+          <div class="post-excerpt">Heinrich Schliemann's excavations at Hisarlık shocked the world — nine cities layered upon one another, each hiding a different age of Anatolian civilization...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.1s">
+          <div class="post-era">C. 560 BCE — Archaic Period</div>
+          <div class="post-title">Ephesus and the Temple of Artemis</div>
+          <div class="post-excerpt">One of the Seven Wonders of the Ancient World stood on the western shores of Anatolia, a monument to divine feminine power and Ionian ambition...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.2s">
+          <div class="post-era">C. 334 BCE — Hellenistic Period</div>
+          <div class="post-title">Alexander's March Through Anatolia</div>
+          <div class="post-excerpt">In a single campaign season, the young Macedonian king swept through Persian-held Anatolia, liberating Greek cities and cutting the legendary Gordian Knot...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.3s">
+          <div class="post-era">C. 200 BCE — Hellenistic Period</div>
+          <div class="post-title">Pergamon: City of Knowledge</div>
+          <div class="post-excerpt">Rival to Alexandria itself, the great library of Pergamon held hundreds of thousands of scrolls. Here parchment was born, and the Attalid kings made culture their weapon...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.4s">
+          <div class="post-era">C. 1400 BCE — Bronze Age</div>
+          <div class="post-title">The Hittites: Forgotten Superpower</div>
+          <div class="post-excerpt">For centuries their very name had vanished from history. Then archaeologists unearthed an empire that once challenged Egypt at the Battle of Kadesh...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.5s">
+          <div class="post-era">C. 700 BCE — Archaic Period</div>
+          <div class="post-title">Homer and the Ionian Coast</div>
+          <div class="post-excerpt">Seven cities claimed the honour of being his birthplace. Ancient Smyrna was among them — and the sunlit shores of Ionia breathe through every verse of the Iliad...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== BLOG PAGE ===== -->
+  <div class="page" id="page-blog">
+    <main>
+      <div class="section-title" id="section-blog">ALL ARTICLES</div>
+      <div class="posts-grid">
+        <div class="post-card scroll-reveal">
+          <div class="post-era">C. 3000 BCE — Bronze Age</div>
+          <div class="post-title">The Walls of Troy: History or Legend?</div>
+          <div class="post-excerpt">Nine cities layered upon one another at Hisarlık, each hiding a different age of Anatolian civilization...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.07s">
+          <div class="post-era">C. 560 BCE — Archaic Period</div>
+          <div class="post-title">Ephesus and the Temple of Artemis</div>
+          <div class="post-excerpt">One of the Seven Wonders of the Ancient World stood on the western shores of Anatolia...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.14s">
+          <div class="post-era">C. 334 BCE — Hellenistic Period</div>
+          <div class="post-title">Alexander's March Through Anatolia</div>
+          <div class="post-excerpt">The young Macedonian king swept through Persian-held Anatolia, liberating Greek cities and cutting the Gordian Knot...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.21s">
+          <div class="post-era">C. 200 BCE — Hellenistic Period</div>
+          <div class="post-title">Pergamon: City of Knowledge</div>
+          <div class="post-excerpt">Rival to Alexandria itself, the great library of Pergamon held hundreds of thousands of scrolls...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.28s">
+          <div class="post-era">C. 1400 BCE — Bronze Age</div>
+          <div class="post-title">The Hittites: Forgotten Superpower</div>
+          <div class="post-excerpt">For centuries their very name had vanished from history. Then archaeologists unearthed an empire that challenged Egypt...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.35s">
+          <div class="post-era">C. 700 BCE — Archaic Period</div>
+          <div class="post-title">Homer and the Ionian Coast</div>
+          <div class="post-excerpt">Seven cities claimed the honour of being Homer's birthplace. Ancient Smyrna was among them...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.42s">
+          <div class="post-era">C. 480 BCE — Classical Period</div>
+          <div class="post-title">The Persian Wars and Ionian Greeks</div>
+          <div class="post-excerpt">The Ionian Revolt of 499 BCE ignited a conflict that would reshape the Mediterranean world forever...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+        <div class="post-card scroll-reveal" style="transition-delay:0.49s">
+          <div class="post-era">C. 100 BCE — Roman Period</div>
+          <div class="post-title">Aphrodisias: City of the Goddess</div>
+          <div class="post-excerpt">Hidden in the Meander Valley, Aphrodisias was one of the finest cities in the Roman East, blessed by marble and divine patronage...</div>
+          <a class="post-read">READ MORE →</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== ABOUT PAGE ===== -->
+  <div class="page" id="page-about">
+    <main>
+      <div class="about-content">
+        <div class="section-title" id="section-about-title">ABOUT SMYRNA</div>
+        <div class="scroll-reveal">
+          <h2 id="about-h2">A Journey Through Ancient Worlds</h2>
+
+          <div class="about-quote" id="about-quote">
+            "The fates have given mankind a patient soul." — Homer, Iliad
+          </div>
+
+          <p id="about-p1">Smyrna is a blog dedicated to the ancient civilizations of Anatolia and the Greek world. From the Bronze Age cities of Troy and the Hittite empire to the golden age of Ionian philosophy and Hellenistic culture, we explore the stories, people and places that shaped the ancient Mediterranean.</p>
+
+          <p id="about-p2">This project began as a personal passion for Anatolian archaeology and Greek mythology. The coast of western Turkey — ancient Ionia — is one of the richest archaeological landscapes in the world, yet it remains little known to the wider public. Smyrna aims to change that.</p>
+
+          <p id="about-p3">All articles are written with the help of historical sources, modern scholarship, and our AI assistant — which can generate new articles on demand in French, English, or Turkish. This makes Smyrna one of the first multilingual AI-powered ancient history blogs.</p>
+
+          <p id="about-p4">The name "Smyrna" refers to the ancient city now known as İzmir, on the Aegean coast of Turkey — traditionally considered one of the birthplaces of Homer, and a city that has continuously been inhabited for over 3,000 years.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== LEGAL PAGE ===== -->
+  <div class="page" id="page-legal">
+    <main>
+      <div class="about-content">
+        <div class="section-title" id="section-legal-title">LEGAL NOTICE</div>
+        <div class="scroll-reveal">
+
+          <h2 id="legal-h2" style="margin-bottom:1.5rem;">Terms of Use &amp; Legal Notice</h2>
+
+          <div class="about-quote" id="legal-quote">
+            This site is strictly dedicated to ancient history, archaeology and Greco-Anatolian civilization. Any use contrary to these purposes is prohibited.
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s1">1. Editorial Purpose</h3>
+            <p id="legal-p1">Smyrna (voyage-anatolie.onrender.com) is a non-commercial cultural blog dedicated exclusively to ancient history, archaeology, mythology, and the civilizations of the Anatolian and Greek world. All content — whether written by the author or generated by the integrated AI assistant — concerns historical and academic subjects only.</p>
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s2">2. Prohibited Content &amp; Content Filtering</h3>
+            <p id="legal-p2">This site operates a strict content filter on all AI-generated articles. The following topics are categorically refused and cannot be generated by the AI assistant on this platform:</p>
+            <ul class="legal-list" id="legal-list">
+              <li>Terrorism, terrorist organizations, or any content promoting, glorifying or facilitating violent extremism (including but not limited to PKK, FETÖ/Gülen movement, DAESH/ISIS, Al-Qaeda, and all recognized terrorist entities under Turkish, EU, French and international law)</li>
+              <li>Incitement to ethnic, religious or national hatred</li>
+              <li>War propaganda or calls to armed violence</li>
+              <li>Holocaust denial or revisionism</li>
+              <li>Content violating the dignity of persons or groups</li>
+              <li>Any content illegal under French law (Loi Gayssot), Turkish law (TCK Art. 314–316), Belgian law, or applicable EU regulations</li>
+            </ul>
+            <p id="legal-p2b" style="margin-top:0.8rem;">Any attempt to circumvent this filter is logged and may be reported to the relevant authorities.</p>
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s3">3. AI-Generated Content</h3>
+            <p id="legal-p3">Articles generated by the AI assistant (Claude, by Anthropic) are produced for informational and cultural purposes only. The site operator declines all responsibility for any factual inaccuracies in AI-generated content. Users are encouraged to verify historical information with academic sources. The AI system is configured to refuse any request outside the scope of ancient history.</p>
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s4">4. Intellectual Property</h3>
+            <p id="legal-p4">All original editorial content on this site is the property of the site operator. AI-generated texts are produced under the terms of Anthropic's usage policies. Reproduction of content is permitted for non-commercial, educational purposes with attribution to Smyrna — voyage-anatolie.onrender.com.</p>
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s5">5. Limitation of Liability</h3>
+            <p id="legal-p5">The operator of this site makes no warranties regarding the completeness or accuracy of historical information presented. External links are provided for reference only; the operator accepts no responsibility for third-party content. This site does not collect personal data and does not use tracking cookies.</p>
+          </div>
+
+          <div class="legal-block">
+            <h3 class="legal-h3" id="legal-s6">6. Applicable Law &amp; Jurisdiction</h3>
+            <p id="legal-p6">This site is operated in compliance with Belgian law, French law, Turkish law, and applicable European Union regulations regarding online content. Any dispute shall be subject to the competent courts of the operator's jurisdiction. For any complaint or legal notice, please contact the site operator directly.</p>
+          </div>
+
+          <div class="legal-block" style="border-top:1px solid rgba(139,115,85,0.25);padding-top:1.5rem;margin-top:2rem;">
+            <p style="font-size:13px;color:var(--stone-dark);font-style:italic;" id="legal-lastupdate">Last updated: May 2026 · Smyrna — Ancient Anatolia &amp; Greek History Blog</p>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">🏛 SMYRNA</div>
+    <p id="footer-tagline">ANCIENT ANATOLIA &amp; GREEK HISTORY</p>
+    <p style="margin-top:0.8rem;font-size:11px;opacity:0.5;">voyage-anatolie.onrender.com · Powered by Claude AI · <a onclick="showPage('legal')" style="color:var(--stone);cursor:pointer;text-decoration:underline;">Legal Notice</a></p>
+  </footer>
+
+</div>
+
+<script>
+  /* ===== TRANSLATIONS ===== */
+  const i18n = {
+    en: {
+      heroSub: 'Ancient Anatolia & Greek History',
+      heroDesc: 'Discover ancient cities, forgotten myths and lost civilizations of the Anatolian world.',
+      aiTitle: '✦ GENERATE AN ARTICLE WITH AI',
+      aiDesc: 'Choose a topic or write your own, then select the language for your article.',
+      sectionFeatured: 'FEATURED ARTICLES',
+      sectionBlog: 'ALL ARTICLES',
+      sectionAbout: 'ABOUT SMYRNA',
+      genBtn: '✦ GENERATE ARTICLE',
+      placeholder: 'Or write your own topic...',
+      navHome: 'HOME', navBlog: 'BLOG', navAbout: 'ABOUT',
+      aboutH2: 'A Journey Through Ancient Worlds',
+      aboutQuote: '"The fates have given mankind a patient soul." — Homer, Iliad',
+      aboutP1: 'Smyrna is a blog dedicated to the ancient civilizations of Anatolia and the Greek world. From Bronze Age Troy to Ionian philosophy, we explore the stories that shaped the ancient Mediterranean.',
+      aboutP2: 'This project began as a personal passion for Anatolian archaeology and Greek mythology. The coast of western Turkey — ancient Ionia — is one of the richest archaeological landscapes in the world.',
+      aboutP3: 'All articles are written with the help of historical sources and our AI assistant, which can generate new articles on demand in French, English, or Turkish.',
+      aboutP4: 'The name "Smyrna" refers to the ancient city now known as İzmir — traditionally one of the birthplaces of Homer, and inhabited for over 3,000 years.',
+      footerTagline: 'ANCIENT ANATOLIA & GREEK HISTORY',
+      articleLangValue: 'English',
+      navLegal: 'LEGAL',
+      legalSectionTitle: 'LEGAL NOTICE',
+      legalH2: 'Terms of Use & Legal Notice',
+      legalQuote: 'This site is strictly dedicated to ancient history, archaeology and Greco-Anatolian civilization. Any use contrary to these purposes is prohibited.'
+    },
+    fr: {
+      heroSub: 'Anatolie Antique & Histoire Grecque',
+      heroDesc: 'Découvrez les cités antiques, les mythes oubliés et les civilisations perdues du monde anatolien.',
+      aiTitle: '✦ GÉNÉRER UN ARTICLE AVEC L\'IA',
+      aiDesc: 'Choisissez un sujet ou saisissez le vôtre, puis sélectionnez la langue de votre article.',
+      sectionFeatured: 'ARTICLES EN VEDETTE',
+      sectionBlog: 'TOUS LES ARTICLES',
+      sectionAbout: 'À PROPOS DE SMYRNA',
+      genBtn: '✦ GÉNÉRER L\'ARTICLE',
+      placeholder: 'Ou saisissez votre propre sujet...',
+      navHome: 'ACCUEIL', navBlog: 'BLOG', navAbout: 'À PROPOS',
+      aboutH2: 'Un Voyage dans les Mondes Antiques',
+      aboutQuote: '«\u00a0Le destin a donné aux hommes une âme patiente.\u00a0» — Homère, Iliade',
+      aboutP1: 'Smyrna est un blog dédié aux civilisations antiques d\'Anatolie et du monde grec. De Troie à la philosophie ionienne, nous explorons les récits qui ont façonné la Méditerranée antique.',
+      aboutP2: 'Ce projet est né d\'une passion personnelle pour l\'archéologie anatolienne et la mythologie grecque. La côte occidentale de la Turquie — l\'ancienne Ionie — est l\'un des paysages archéologiques les plus riches du monde.',
+      aboutP3: 'Tous les articles sont rédigés avec l\'aide de sources historiques et de notre assistant IA, qui peut générer des articles à la demande en français, anglais ou turc.',
+      aboutP4: 'Le nom «\u00a0Smyrna\u00a0» désigne l\'ancienne cité aujourd\'hui connue sous le nom d\'İzmir — traditionnellement l\'un des lieux de naissance d\'Homère, habitée depuis plus de 3\u00a0000 ans.',
+      footerTagline: 'ANATOLIE ANTIQUE & HISTOIRE GRECQUE',
+      articleLangValue: 'French',
+      navLegal: 'LÉGAL',
+      legalSectionTitle: 'MENTIONS LÉGALES',
+      legalH2: 'Mentions légales & Conditions d\'utilisation',
+      legalQuote: 'Ce site est strictement dédié à l\'histoire antique, à l\'archéologie et à la civilisation gréco-anatolienne. Toute utilisation contraire à ces finalités est interdite.'
+    },
+    tr: {
+      heroSub: 'Antik Anadolu & Yunan Tarihi',
+      heroDesc: 'Anadolu dünyasının antik şehirlerini, unutulmuş mitlerini ve kaybolmuş medeniyetlerini keşfedin.',
+      aiTitle: '✦ YAPAY ZEKA İLE MAKALE OLUŞTUR',
+      aiDesc: 'Bir konu seçin ya da kendiniz yazın, ardından makalenizin dilini belirleyin.',
+      sectionFeatured: 'ÖNE ÇIKAN MAKALELER',
+      sectionBlog: 'TÜM MAKALELER',
+      sectionAbout: 'SMYRNA HAKKINDA',
+      genBtn: '✦ MAKALE OLUŞTUR',
+      placeholder: 'Ya da kendi konunuzu yazın...',
+      navHome: 'ANA SAYFA', navBlog: 'BLOG', navAbout: 'HAKKINDA',
+      aboutH2: 'Antik Dünyalara Bir Yolculuk',
+      aboutQuote: '"Tanrılar insanlara sabırlı bir ruh vermiştir." — Homeros, İlyada',
+      aboutP1: 'Smyrna, Anadolu ve Yunan dünyasının antik uygarlıklarına adanmış bir blogdur. Tunç Çağı Troya\'sından İyonya felsefesine kadar Akdeniz\'i şekillendiren hikayeleri keşfediyoruz.',
+      aboutP2: 'Bu proje, Anadolu arkeolojisine ve Yunan mitolojisine duyulan kişisel bir tutkunun ürünüdür. Batı Türkiye kıyıları — antik İyonya — dünyanın en zengin arkeolojik peyzajlarından biridir.',
+      aboutP3: 'Tüm makaleler tarihsel kaynaklar ve yapay zeka asistanımızın yardımıyla yazılmaktadır; Fransızca, İngilizce veya Türkçe olarak istek üzerine makale üretebilir.',
+      aboutP4: '"Smyrna" adı, günümüzde İzmir olarak bilinen antik şehre atıfta bulunur — geleneksel olarak Homeros\'un doğduğu yerlerden biri ve 3.000 yılı aşkın süredir iskân edilen bir şehir.',
+      footerTagline: 'ANTİK ANADOLU & YUNAN TARİHİ',
+      articleLangValue: 'Turkish',
+      navLegal: 'YASAL',
+      legalSectionTitle: 'YASAL UYARI',
+      legalH2: 'Kullanım Koşulları & Yasal Uyarı',
+      legalQuote: 'Bu site yalnızca antik tarih, arkeoloji ve Greko-Anadolu medeniyetine adanmıştır. Bu amaçların dışındaki her türlü kullanım yasaktır.'
+    },
+    nl: {
+      heroSub: 'Oud Anatolië & Griekse Geschiedenis',
+      heroDesc: 'Ontdek oude steden, vergeten mythen en verloren beschavingen van de Anatolische wereld.',
+      aiTitle: '✦ GENEREER EEN ARTIKEL MET AI',
+      aiDesc: 'Kies een onderwerp of schrijf uw eigen, selecteer vervolgens de taal van uw artikel.',
+      sectionFeatured: 'UITGELICHTE ARTIKELEN',
+      sectionBlog: 'ALLE ARTIKELEN',
+      sectionAbout: 'OVER SMYRNA',
+      genBtn: '✦ GENEREER ARTIKEL',
+      placeholder: 'Of schrijf uw eigen onderwerp...',
+      navHome: 'HOME', navBlog: 'BLOG', navAbout: 'OVER',
+      aboutH2: 'Een Reis door de Oude Wereld',
+      aboutQuote: '"Het lot heeft de mensheid een geduldige ziel gegeven." — Homerus, Ilias',
+      aboutP1: 'Smyrna is een blog gewijd aan de oude beschavingen van Anatolië en de Griekse wereld. Van het Bronstijdse Troje tot de Ionische filosofie verkennen wij de verhalen die de antieke Middellandse Zee hebben gevormd.',
+      aboutP2: 'Dit project ontstond vanuit een persoonlijke passie voor Anatolische archeologie en Griekse mythologie. De westkust van Turkije — het oude Ionië — is een van de rijkste archeologische landschappen ter wereld.',
+      aboutP3: 'Alle artikelen worden geschreven met behulp van historische bronnen en onze AI-assistent, die op verzoek artikelen kan genereren in het Frans, Engels, Turks of Nederlands.',
+      aboutP4: 'De naam "Smyrna" verwijst naar de oude stad die nu bekend staat als İzmir — traditioneel een van de geboorteplaatsen van Homerus, en al meer dan 3.000 jaar bewoond.',
+      footerTagline: 'OUD ANATOLIË & GRIEKSE GESCHIEDENIS',
+      articleLangValue: 'Dutch',
+      navLegal: 'JURIDISCH',
+      legalSectionTitle: 'JURIDISCHE MEDEDELING',
+      legalH2: 'Gebruiksvoorwaarden & Juridische Mededeling',
+      legalQuote: 'Deze site is uitsluitend gewijd aan oude geschiedenis, archeologie en Grieks-Anatolische beschaving. Elk gebruik in strijd met deze doeleinden is verboden.'
+    }
+  };
+
+  /* ===== CONTENT FILTER ===== */
+  const BLOCKED_TERMS = [
+    /* Terrorist organizations */
+    'pkk','pyd','ypg','fetö','feto','gülen','gulen','daesh','isis','isil','al-qaeda','al qaeda',
+    'hamas','hizbullah','hezbollah','boko haram','ira','eta','grapo','rote armee',
+    /* Violence / terrorism keywords — Dutch */
+    'terrorisme','terrorist','terroristisch','jihad','aanslag','bommaanslag',
+    'genocide ontkenning','witte suprematie','extreemrechts','extreemlinks',
+    'haatspraak',
+    'jihad','cihat','holy war','guerre sainte',
+    'bomb making','how to make bomb','explosive','attentat','saldırı',
+    'genocide denial','négationnisme','soykırım inkârı',
+    'white supremacy','suprématie blanche','ırkçılık',
+    'nazi','fascist','fascisme','faşizm',
+    'ethnic cleansing','épuration ethnique',
+    'kill','tuer','öldür','murder','assassin',
+    'coup d\'état','darbe','putsch',
+    /* Hate speech */
+    'hate speech','discours de haine','nefret söylemi',
+    /* Specific organizations (various spellings) */
+    'fetullah','fetullahçı','paralel devlet','deep state örgüt',
+  ];
+
+  function checkContentFilter(topic) {
+    const lower = topic.toLowerCase().trim();
+    for (const term of BLOCKED_TERMS) {
+      if (lower.includes(term)) return term;
+    }
+    return null;
+  }
+
+  const FILTER_MSG = {
+    en: (term) => `⚠ This topic cannot be processed.\n\nSmyrna is a blog dedicated exclusively to ancient history and archaeology. Content related to terrorism, extremism, political violence, hate speech or illegal organizations is strictly prohibited and filtered on this platform.\n\nPlease choose a topic related to ancient Anatolian or Greek history.`,
+    fr: (term) => `⚠ Ce sujet ne peut pas être traité.\n\nSmyrna est un blog dédié exclusivement à l'histoire antique et à l'archéologie. Les contenus liés au terrorisme, à l'extrémisme, à la violence politique, aux discours haineux ou aux organisations illégales sont strictement interdits et filtrés sur cette plateforme.\n\nVeuillez choisir un sujet lié à l'histoire antique de l'Anatolie ou de la Grèce.`,
+    tr: (term) => `⚠ Bu konu işlenemiyor.\n\nSmyrna yalnızca antik tarih ve arkeolojiye adanmış bir blogdur. Terorizm, aşırılık, siyasi şiddet, nefret söylemi veya yasadışı örgütlerle ilgili içerikler bu platformda kesinlikle yasaktır ve filtrelenmektedir.\n\nLütfen Antik Anadolu veya Yunan tarihiyle ilgili bir konu seçin.`,
+    nl: (term) => `⚠ Dit onderwerp kan niet worden verwerkt.\n\nSmyrna is een blog die uitsluitend gewijd is aan oude geschiedenis en archeologie. Inhoud met betrekking tot terrorisme, extremisme, politiek geweld, haatspraak of illegale organisaties is op dit platform strikt verboden en gefilterd.\n\nKies alstublieft een onderwerp gerelateerd aan de oude Anatolische of Griekse geschiedenis.`,
+  };
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.toLowerCase() === lang);
+    });
+    const t = i18n[lang];
+    document.getElementById('hero-sub').textContent = t.heroSub;
+    document.getElementById('hero-desc').textContent = t.heroDesc;
+    document.getElementById('ai-title').textContent = t.aiTitle;
+    document.getElementById('ai-desc').textContent = t.aiDesc;
+    const sf = document.getElementById('section-featured');
+    if (sf) sf.textContent = t.sectionFeatured;
+    const sb = document.getElementById('section-blog');
+    if (sb) sb.textContent = t.sectionBlog;
+    const sa = document.getElementById('section-about-title');
+    if (sa) sa.textContent = t.sectionAbout;
+    document.getElementById('gen-btn').textContent = t.genBtn;
+    document.getElementById('custom-topic').placeholder = t.placeholder;
+    document.getElementById('nav-home').textContent = t.navHome;
+    document.getElementById('nav-blog').textContent = t.navBlog;
+    document.getElementById('nav-about').textContent = t.navAbout;
+    document.getElementById('nav-legal').textContent = t.navLegal;
+    document.getElementById('footer-tagline').textContent = t.footerTagline;
+    const sl = document.getElementById('section-legal-title');
+    if (sl) sl.textContent = t.legalSectionTitle;
+    const lh2 = document.getElementById('legal-h2');
+    if (lh2) lh2.textContent = t.legalH2;
+    const lq = document.getElementById('legal-quote');
+    if (lq) lq.textContent = t.legalQuote;
+    const ah2 = document.getElementById('about-h2');
+    if (ah2) ah2.textContent = t.aboutH2;
+    const aq = document.getElementById('about-quote');
+    if (aq) aq.textContent = t.aboutQuote;
+    ['p1','p2','p3','p4'].forEach(k => {
+      const el = document.getElementById('about-' + k);
+      if (el) el.textContent = t['about' + k.charAt(0).toUpperCase() + k.slice(1)];
+    });
+    document.getElementById('article-lang').value = t.articleLangValue;
+  }
+
+  function selectTopic(btn, topic) {
+    document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedTopic = topic;
+    document.getElementById('custom-topic').value = '';
+  }
+
+  async function generateArticle() {
+    const topic = document.getElementById('custom-topic').value.trim() || selectedTopic;
+    if (!topic) { alert(currentLang === 'fr' ? 'Veuillez choisir ou saisir un sujet.' : currentLang === 'tr' ? 'Lütfen bir konu seçin veya girin.' : currentLang === 'nl' ? 'Kies of voer een onderwerp in.' : 'Please select or enter a topic.'); return; }
+
+    /* ── CONTENT FILTER ── */
+    const blocked = checkContentFilter(topic);
+    if (blocked) {
+      const postDiv = document.getElementById('generated-post');
+      const titleEl = document.getElementById('gen-title');
+      const bodyEl = document.getElementById('gen-body');
+      postDiv.className = 'generated-post visible';
+      titleEl.textContent = currentLang === 'fr' ? '⚠ Contenu refusé' : currentLang === 'tr' ? '⚠ İçerik Reddedildi' : currentLang === 'nl' ? '⚠ Inhoud Geweigerd' : '⚠ Content Refused';
+      const fmsg = FILTER_MSG[currentLang] || FILTER_MSG['en'];
+      const llink = currentLang==='fr'?'mentions légales':currentLang==='tr'?'yasal uyarı':currentLang==='nl'?'juridische mededeling':'legal notice';
+      const lpre = currentLang==='fr'?'Consultez notre ':currentLang==='nl'?'Zie onze ':'See our ';
+      const lpost = currentLang==='fr'?' pour plus d\'informations.':currentLang==='tr'?' sayfasını inceleyin.':currentLang==='nl'?' voor meer informatie.':' for more information.';
+      bodyEl.innerHTML = `<p style="color:var(--rust);line-height:1.8;white-space:pre-line;">${fmsg(blocked)}</p>
+        <p style="margin-top:1rem;font-size:13px;color:var(--stone-dark);font-style:italic;">${currentLang==='tr'?'':lpre}<a onclick="showPage('legal')" style="color:var(--gold);cursor:pointer;">${llink}</a>${lpost}</p>`;
+      return;
+    }
+    /* ── END FILTER ── */
+    const lang = document.getElementById('article-lang').value;
+    const btn = document.getElementById('gen-btn');
+    const postDiv = document.getElementById('generated-post');
+    const titleEl = document.getElementById('gen-title');
+    const bodyEl = document.getElementById('gen-body');
+
+    btn.disabled = true;
+    btn.textContent = currentLang === 'fr' ? '✦ GÉNÉRATION...' : currentLang === 'tr' ? '✦ OLUŞTURULUYOR...' : currentLang === 'nl' ? '✦ GENEREREN...' : '✦ GENERATING...';
+    postDiv.className = 'generated-post visible';
+    titleEl.textContent = '';
+    bodyEl.innerHTML = '<p class="loading-msg">✦ Inscribing on stone...</p>';
+
+    try {
+      const res = await fetch('/api/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: topic, lang: lang })
+      });
+      const data = await res.json();
+      const text = data.content.map(i => i.text || '').join('');
+      const clean = text.replace(/```json|```/g, '').trim();
+      const parsed = JSON.parse(clean);
+      titleEl.textContent = parsed.title;
+      bodyEl.innerHTML = parsed.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+    } catch (e) {
+      bodyEl.innerHTML = '<p style="color:var(--rust)">Could not generate article. Make sure the API key is configured in your deployment.</p>';
+    }
+
+    btn.disabled = false;
+    btn.textContent = i18n[currentLang].genBtn;
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(initReveal, 100);
+  }
+
+  function initReveal() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.scroll-reveal:not(.in)').forEach(el => observer.observe(el));
+  }
+
+  initReveal();
+</script>
+
+</body>
+</html>
