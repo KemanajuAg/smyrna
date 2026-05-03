@@ -1,9 +1,9 @@
 import os
 import json
 import urllib.request
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, send_from_directory
 
-main = Blueprint("main", __name__)
+main = Blueprint("main", __name__, static_folder="static", static_url_path="/static")
 
 @main.route("/")
 def home():
@@ -12,6 +12,10 @@ def home():
 @main.route("/blog")
 def blog():
     return render_template("blog.html")
+
+@main.route("/static/<path:filename>")
+def static_files(filename):
+    return send_from_directory(os.path.join(os.path.dirname(__file__), 'static'), filename)
 
 @main.route("/api/generate", methods=["POST"])
 def generate():
