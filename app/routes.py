@@ -24,11 +24,13 @@ def generate():
         topic = data.get("topic", "")
         lang = data.get("lang", "English")
 
+        system_prompt = "You are a historian. Write a blog article in " + lang + ". Respond ONLY with raw JSON: {\"title\": \"title here\", \"body\": \"4 paragraphs separated by two newlines\"}"
+
         payload = json.dumps({
             "model": "claude-sonnet-4-5",
             "max_tokens": 1000,
-            "system": f"You are a historian. Write a blog article in {lang}. Respond ONLY with raw JSON: {{\"title\": \"title here\", \"body\": \"4 paragraphs separated by \\n\\n\"}}",
-            "messages": [{"role": "user", "content": f"Write about: {topic}"}]
+            "system": system_prompt,
+            "messages": [{"role": "user", "content": "Write about: " + topic}]
         }).encode("utf-8")
 
         req = urllib.request.Request(
@@ -50,4 +52,4 @@ def generate():
             return jsonify(parsed)
 
     except Exception as e:
-        return jsonify({"error": f"DETAIL: {str(e)}"}), 500
+        return jsonify({"error": "DETAIL: " + str(e)}), 500
