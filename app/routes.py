@@ -25,7 +25,7 @@ def generate():
         lang = data.get("lang", "English")
 
         payload = json.dumps({
-            "model": "claude-sonnet-4-20250514",
+            "model": "claude-sonnet-4-5",
             "max_tokens": 1000,
             "system": f"You are a historian. Write a blog article in {lang}. Respond ONLY with raw JSON: {{\"title\": \"title here\", \"body\": \"4 paragraphs separated by \\n\\n\"}}",
             "messages": [{"role": "user", "content": f"Write about: {topic}"}]
