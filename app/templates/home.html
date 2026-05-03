@@ -688,6 +688,45 @@
       .hero-img-2, .hero-img-3 { display: none; }
     }
 
+        /* ===== SHARE BUTTONS ===== */
+    .share-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(139,115,85,0.2);
+    }
+
+    .share-label {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--stone-dark);
+      align-self: center;
+    }
+
+    .share-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 7px 14px;
+      border-radius: 2px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      color: #fff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .share-btn:hover { opacity: 0.85; }
+    .share-btn.fb { background: #1877f2; }
+    .share-btn.tw { background: #000; }
+    .share-btn.li { background: #0a66c2; }
+    .share-btn.wa { background: #25d366; }
+
         /* ===== FOOTER ===== */
     footer {
       background: var(--stone-darker);
@@ -812,6 +851,13 @@
         <div class="generated-post" id="generated-post">
           <h4 id="gen-title"></h4>
           <div class="post-body" id="gen-body"></div>
+          <div class="share-bar" id="share-bar" style="display:none;">
+            <span class="share-label">SHARE:</span>
+            <a class="share-btn fb" id="share-fb" href="#" target="_blank">📘 Facebook</a>
+            <a class="share-btn tw" id="share-tw" href="#" target="_blank">✕ Twitter</a>
+            <a class="share-btn li" id="share-li" href="#" target="_blank">💼 LinkedIn</a>
+            <a class="share-btn wa" id="share-wa" href="#" target="_blank">📱 WhatsApp</a>
+          </div>
         </div>
       </div>
 
@@ -1040,6 +1086,13 @@
       <div class="modal-era" id="modal-era"></div>
       <div class="modal-title" id="modal-title"></div>
       <div class="modal-body" id="modal-body"><div class="modal-loading">✦ Loading from the ancient archives...</div></div>
+      <div class="share-bar" id="modal-share-bar" style="display:none;">
+        <span class="share-label">SHARE:</span>
+        <a class="share-btn fb" id="modal-share-fb" href="#" target="_blank">📘 Facebook</a>
+        <a class="share-btn tw" id="modal-share-tw" href="#" target="_blank">✕ Twitter</a>
+        <a class="share-btn li" id="modal-share-li" href="#" target="_blank">💼 LinkedIn</a>
+        <a class="share-btn wa" id="modal-share-wa" href="#" target="_blank">📱 WhatsApp</a>
+      </div>
     </div>
   </div>
 
@@ -1283,6 +1336,7 @@
       if (data.error) throw new Error(data.error);
       titleEl.textContent = data.title;
       bodyEl.innerHTML = data.body.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      updateShareLinks('share-bar', data.title, data.body.substring(0, 120));
     } catch (e) {
       bodyEl.innerHTML = `<p style="color:var(--rust)">Hata: ${e.message}</p>`;
     }
@@ -1326,6 +1380,7 @@
       if (data.error) throw new Error(data.error);
       document.getElementById('modal-title').textContent = data.title || title;
       document.getElementById('modal-body').innerHTML = data.body.split('\n\n').map(p => '<p>' + p + '</p>').join('');
+      updateShareLinks('modal-share-bar', data.title || title, data.body.substring(0, 120));
     } catch(e) {
       document.getElementById('modal-body').innerHTML = '<p style="color:var(--rust)">Could not load article: ' + e.message + '</p>';
     }
